@@ -1,5 +1,5 @@
 # Specific to this project
-BattleTank/Content/StarterContent
+BattleTank/Content/StarterContent/*
 
 # Visual Studio 2015 user specific files
 .vs/
