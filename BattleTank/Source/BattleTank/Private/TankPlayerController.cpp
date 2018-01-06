@@ -5,16 +5,16 @@
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-	UE_LOG(LogTemp, Warning, TEXT("PlayerController Begin Play!"));
+	UE_LOG(LogTemp, Warning, TEXT("Player has spawned!"));
 
 	auto Tank = GetControlledTank();
 	if (Tank)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Tank Pawn was found!"));
+		UE_LOG(LogTemp, Warning, TEXT("Player's Tank Pawn was found!"));
 	}
 	else
 	{
-		UE_LOG(LogTemp, Error, TEXT("Tank Pawn was not found!"));
+		UE_LOG(LogTemp, Error, TEXT("Player's Tank Pawn was not found!"));
 	}
 }
 
