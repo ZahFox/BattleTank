@@ -29,6 +29,20 @@ private:
 	// crosshair intersects the world
 	void AimTowardsCrosshair();
 
-	// Return an OUT parameter, true if hit landscape
+	bool GetLookVectorHitLocation(FVector LookDirection, FVector& OutHitLocation) const;
+
+	// Mutates the OUT parameter, returns true if raycast hit landscape
 	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
+
+	// Mutates the OUT parameter, returns true if a look direction was found
+	bool GetLookDirection(FVector2D ScreenLocation, FVector& OutLookDirection) const;
+
+	UPROPERTY(EditAnywhere)
+	float CrossHairXLocation = 0.5f;
+
+	UPROPERTY(EditAnywhere)
+	float CrossHairYLocation = 0.33333f;
+
+	UPROPERTY(EditAnywhere)
+	float LineTraceRange = 1000000.0f;
 };
