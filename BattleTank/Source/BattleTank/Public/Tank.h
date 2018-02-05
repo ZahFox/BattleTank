@@ -36,6 +36,9 @@ protected:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UTankAimingComponent* TankAimingComponent = nullptr;
+
+	UFUNCTION(BlueprintCallable, Category = Firing)
+	virtual void Fire();
 	
 private:
 
