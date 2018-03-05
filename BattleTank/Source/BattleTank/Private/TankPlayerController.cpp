@@ -8,16 +8,6 @@
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-
-	auto Tank = GetControlledTank();
-	if (Tank)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Player's Tank Pawn was found!"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Error, TEXT("Player's Tank Pawn was not found!"));
-	}
 }
 
 
