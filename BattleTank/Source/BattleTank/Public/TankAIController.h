@@ -28,4 +28,7 @@ private:
 	ATank* PlayerTank = nullptr;
 
 	ATank* ControlledTank = nullptr;
+
+	// How close can the AI tank get
+	float AcceptanceRadius = 300;
 };
