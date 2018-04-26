@@ -2,7 +2,6 @@
 
 #include "Tank.h"
 #include "TankAimingComponent.h"
-#include "TankMovementComponent.h"
 #include "TankBarrel.h"
 #include "TankTurret.h"
 #include "Projectile.h"
@@ -21,21 +20,24 @@ ATank::ATank()
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
+
+	auto TankName = GetName();
+	UE_LOG(LogTemp, Warning, TEXT("DONKEY - %s Tank C++ Begin Play"), *TankName);
 }
 
 void ATank::AimAt(FVector HitLocation)
 {
-	if (TankAimingComponent) {
-		TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
-	}
+	if (!ensure(TankAimingComponent)) { return; }
+	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
 
 
 void ATank::Fire()
 {
+	if (!ensure(Barrel)) { return; }
 	bool isReloaded = (GetWorld()->GetTimeSeconds() - LastFireTime) > ReloadTimeInSeconds;
 
-	if (Barrel && isReloaded) {
+	if (isReloaded) {
 		// Spawn a projectile at the socket location on the barrel
 		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
 			ProjectileBlueprint,
