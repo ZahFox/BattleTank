@@ -83,7 +83,9 @@ void UTankAimingComponent::Fire()
 			ProjectileBlueprint,
 			Barrel->GetSocketLocation(FName("Projectile")),
 			Barrel->GetSocketRotation(FName("Projectile"))
-			);
+		);
+
+		UE_LOG(LogTemp, Warning, TEXT("FROM AIMING COMP: Launch Speed is: %f"), LaunchSpeed);
 
 		Projectile->LaunchProjectile(LaunchSpeed);
 		LastFireTime = GetWorld()->GetTimeSeconds();
@@ -95,7 +97,6 @@ void UTankAimingComponent::Fire()
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 {
 	if (!ensure(Barrel) || !ensure(Turret)) { return; }
-
 
 	// Work-out difference between current barrel and aim direction
 	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
