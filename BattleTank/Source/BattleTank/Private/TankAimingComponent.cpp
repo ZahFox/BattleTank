@@ -85,8 +85,6 @@ void UTankAimingComponent::Fire()
 			Barrel->GetSocketRotation(FName("Projectile"))
 		);
 
-		UE_LOG(LogTemp, Warning, TEXT("FROM AIMING COMP: Launch Speed is: %f"), LaunchSpeed);
-
 		Projectile->LaunchProjectile(LaunchSpeed);
 		LastFireTime = GetWorld()->GetTimeSeconds();
 		RoundsLeft--;
