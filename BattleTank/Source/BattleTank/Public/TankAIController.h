@@ -9,13 +9,13 @@
 class UTankAimingComponent;
 
 /**
- * 
+ *
  */
 UCLASS()
 class BATTLETANK_API ATankAIController : public AAIController
 {
 	GENERATED_BODY()
-	
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -31,5 +31,10 @@ private:
 
 	APawn* PlayerTank = nullptr;
 
+	virtual void SetPawn(APawn* InPawn) override;
+
 	UTankAimingComponent* AimingComponent = nullptr;
+
+	UFUNCTION()
+	void OnPossessedTankDeath();
 };
