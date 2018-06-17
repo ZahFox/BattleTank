@@ -19,21 +19,17 @@ void ATankAIController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	//auto ControlledTank = Cast<ATank>(GetPawn());
-	//auto PlayerTank = Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
+	if (!(PlayerTank && AimingComponent)) { return;  }
 
-	if (ensure(PlayerTank && AimingComponent))
-	{
-		// Move towards the player
-		MoveToActor(PlayerTank, AcceptanceRadius); // TODO check radius in in cm
+	// Move towards the player
+	MoveToActor(PlayerTank, AcceptanceRadius); // TODO check radius in in cm
 
-		// Aim towards the player
-		AimingComponent->AimAt(PlayerTank->GetActorLocation());
+	// Aim towards the player
+	AimingComponent->AimAt(PlayerTank->GetActorLocation());
 
-		// Fire if ready
-		if (AimingComponent->GetFiringState() == EFiringState::Locked)
-			AimingComponent->Fire();
-	}
+	// Fire if ready
+	if (AimingComponent->GetFiringState() == EFiringState::Locked)
+		AimingComponent->Fire();
 }
 
 void ATankAIController::SetPawn(APawn* InPawn)
