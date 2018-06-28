@@ -26,13 +26,11 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UPhysicsConstraintComponent* PhysicsConstraint = nullptr;
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
-	UStaticMeshComponent* Mass = nullptr;
-
-	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UStaticMeshComponent* Wheel = nullptr;
+
+	void SetupConstraint();
 };
